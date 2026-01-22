@@ -1,0 +1,40 @@
+#jeu table tr td {
+	width: 40px;
+	height: 40px;
+    color: black;
+	border: 1px solid black;
+	font-size: 20px;
+	font-family: Helvetica;
+	text-align: center;
+	vertical-align: center;
+}
+#main {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.piecesCaches:hover {
+	cursor: pointer;
+}
+.casesVide:hover {
+	cursor: pointer;
+}
+#msg {
+	color: red;
+	font-weight: 900;
+	font-size: 25px;
+}
+.blocBouton{
+	text-align: center;
+}
+.blocMessage{
+	text-align: center;
+}
+#affichErreur, #sousCaches {
+	color:red;
+	font-size: 20px;
+}
+#boutonNP {
+	font-size: 20px;
+}
