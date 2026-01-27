@@ -76,13 +76,10 @@ Ce projet est conçu pour être exécuté dans un environnement web supportant P
 (ex. **Brython**, **Pyodide**, ou un framework pédagogique).
 
 1. Charger la page HTML principale contenant un élément :
-   ```html
-   <div id="main"></div>
-   ```
+  
 2. Inclure tp2.py et tp2.css
 
 3. Lancer la fonction init() au chargement de la page
 
 
-## Structure du projet
 
