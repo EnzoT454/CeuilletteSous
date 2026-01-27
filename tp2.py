@@ -1,5 +1,4 @@
-#  Hamza Aqel, Hatim Beddah
-#  Matricules: 20111814, 20304762
+#  Hamza Aqel
 #  Programme web pour jouer au jeu « Cueillette de sous »
 
 #  Hypothèses: on considère que le joueur clique une seule fois sur
