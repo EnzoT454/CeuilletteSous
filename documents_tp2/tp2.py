@@ -290,3 +290,5 @@ def init():
     main = document.querySelector("#main")
     main.innerHTML = genererGrille()
     
+
+init()
