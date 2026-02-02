@@ -1,85 +1,94 @@
-# Cueillette de sous — Jeu web en Python
+# Cueillette de sous — Jeu web interactif
 
 Projet web interactif implémentant le jeu **« Cueillette de sous »**, inspiré du principe du démineur.  
-Le joueur clique sur une grille 10×10 afin de découvrir des pièces cachées, tout en évitant de faire trop d’erreurs.
+Le joueur explore une grille 10×10 afin de découvrir des pièces cachées, tout en évitant de faire trop d’erreurs.
 
-Ce programme est écrit en **Python exécuté côté client** (environnement type Brython / Pyodide), avec génération dynamique du HTML et stylisation via CSS.
+Le jeu est développé en **Python exécuté côté navigateur** à l’aide du moteur **CodeBoot**, avec génération dynamique du contenu HTML et mise en forme via CSS.
 
 ---
 
-## Fonctionnalités
+## Description
 
-- Génération aléatoire d’une **grille 10×10**
-- Placement de **15 à 20 pièces cachées**, sans pièces adjacentes
-- Calcul automatique des **valeurs numériques** indiquant le nombre de pièces voisines
-- Gestion des **clics utilisateur**
-- Comptage :
-  - des pièces trouvées
-  - des erreurs (maximum 3)
-- Conditions de **victoire / défaite**
-- Redémarrage automatique de la partie après la fin du jeu
-- Interface web dynamique (HTML généré en Python)
+À chaque partie, le jeu génère :
+- une **grille 10×10**
+- entre **15 et 20 pièces cachées**, placées aléatoirement
+- aucune pièce n’est adjacente à une autre (horizontalement, verticalement ou en diagonale)
+
+Chaque case non occupée affiche un nombre indiquant le **nombre de pièces voisines**, ce qui aide le joueur à faire ses choix.
 
 ---
 
 ## Règles du jeu
 
-- Le joueur clique sur des cases de la grille :
-  - 🪙 **Pièce** : la pièce est révélée
-  - ❌ **Case vide** : compte comme une erreur
+- Le joueur clique sur les cases de la grille :
+  - 🪙 **Case avec pièce** : la pièce est révélée
+  - ❌ **Case vide** : une erreur est comptabilisée
 - Le joueur :
-  - **gagne** s’il trouve toutes les pièces avec moins de 3 erreurs
-  - **perd** s’il atteint 3 erreurs avant de trouver toutes les pièces
-- Le jeu redémarre automatiquement après un message de victoire ou de défaite
+  - **gagne** s’il découvre toutes les pièces avec moins de 3 erreurs
+  - **perd** s’il atteint 3 erreurs avant d’avoir trouvé toutes les pièces
+- Une fois la partie terminée :
+  - un message *« Vous avez gagné ! »* ou *« Vous avez perdu ! »* est affiché
+  - la partie redémarre automatiquement après quelques secondes
+
+**Hypothèses**
+- Une seule interaction par case
+- Le joueur cesse de cliquer après la fin de la partie
 
 ---
 
-## Détails techniques
+## Structure du projet
 
-### Génération des pièces
-- Nombre de pièces cachées : **entre 15 et 20**
-- Aucune pièce ne peut être placée dans une case adjacente :
-  - horizontalement
-  - verticalement
-  - diagonalement
-
-### Valeur des cases
-- Chaque case non occupée affiche un nombre entre **0 et 8**
-- Cette valeur représente le nombre de pièces présentes dans les cases voisines
-
----
-
-## Fonctions principales
-
-- `listIndexAlea()` : génère les positions aléatoires des pièces
-- `valeurCases()` : calcule les valeurs numériques des cases
-- `genererGrille()` : crée la grille HTML complète
-- `clic(index)` : gère le clic sur une pièce
-- `compterErreurs()` : gère les clics erronés
-- `etatJeu()` : détermine victoire ou défaite
-- `init()` : initialise ou réinitialise une partie
+```text
+.
+├── server-webTp2.py     # Serveur HTTP local
+└── documents_tp2/
+├── index.html           # Page principale
+├── tp2.py               # Logique du jeu (Python)
+├── tp2.css              # Style de la grille et de l’interface
+├── codeboot.bundle.js   # Moteur CodeBoot
+├── codeboot.bundle.css
+└── symboles/
+└── coste.svg            # Icône de pièce
+```
 
 ---
 
-## Hypothèses
+## Prérequis
 
-- Le joueur clique **une seule fois par case**
-- Le joueur cesse de jouer après l’affichage :
-  - *« Vous avez gagné ! »*
-  - *« Vous avez perdu ! »*
+- Python 3.x
+- Un navigateur web moderne (Chrome, Firefox, Safari)
+- Aucun framework externe à installer
+
+> Le jeu ne fonctionne pas si `index.html` est ouvert directement sans serveur.
 
 ---
 
-## Exécution
+## Étapes d’exécution
 
-Ce projet est conçu pour être exécuté dans un environnement web supportant Python côté client  
-(ex. **Brython**, **Pyodide**, ou un framework pédagogique).
+### 1️⃣ Démarrer le serveur web
 
-1. Charger la page HTML principale contenant un élément :
-  
-2. Inclure tp2.py et tp2.css
+Depuis le dossier contenant `server-webTp2.py` :
 
-3. Lancer la fonction init() au chargement de la page
+```bash
+python3 server-webTp2.py
+```
+
+### 2️⃣ Lancer le jeu
+
+Ouvrir un navigateur et accéder à :
+
+```bash
+http://localhost:8000
+```
+
+La page index.html est chargée automatiquement, et le jeu s’affiche dans le navigateur.
+
+Cliquer sur Nouvelle partie pour commencer à jouer.
+
+
+
+
+
 
 
 
